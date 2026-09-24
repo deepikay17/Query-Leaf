@@ -1,0 +1,27 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.venv/
+
+# Node / React
+node_modules/
+dist/
+build/
+
+# Chroma database
+**/data/chroma/
+
+# Uploaded files
+uploads/
+
+# IDE
+.vscode/
+.idea/
