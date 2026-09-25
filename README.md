@@ -16,6 +16,11 @@ QueryLeaf lets you upload a PDF (notes, textbook, slides) and then chat with it 
 - 🃏 **Flashcards** — Key concepts turned into Q&A flashcards for quick recall
 
 ---
+<img width="1893" height="884" alt="dashboard" src="https://github.com/user-attachments/assets/1f21e286-cf3b-4839-97ef-cc99643a6bf3" />
+
+<img width="1893" height="890" alt="home" src="https://github.com/user-attachments/assets/02b2677b-1836-4709-94fb-f32cc35c3358" />
+
+<img width="1888" height="883" alt="output" src="https://github.com/user-attachments/assets/20394b92-94a7-462f-a7ad-c6c20528cc09" />
 
 ## Tech Stack
 
