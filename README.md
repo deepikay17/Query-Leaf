@@ -8,6 +8,15 @@ QueryLeaf lets you upload a PDF (notes, textbook, slides) and then chat with it 
 🔗 **Backend API:** [query-leaf.onrender.com](https://query-leaf.onrender.com) ([API docs](https://query-leaf.onrender.com/docs))
 
 ---
+## 📸 Screenshots
+
+### 🏠 QueryLeaf Dashboard
+
+<p align="center">
+  <img src="./screenshots/dashboard.png" alt="QueryLeaf Dashboard" width="900"/>
+</p>
+
+
 
 ## Features
 
