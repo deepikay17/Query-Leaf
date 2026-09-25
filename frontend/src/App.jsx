@@ -37,6 +37,17 @@ function App() {
   };
 
   // -----------------------------------------
+  // Change / reset PDF
+  // -----------------------------------------
+
+  const changeFile = () => {
+    setSelectedFile(null);
+    setUploadedFile(null);
+    setMessage("");
+    setError("");
+  };
+
+  // -----------------------------------------
   // Upload PDF
   // -----------------------------------------
 
@@ -183,27 +194,37 @@ function App() {
 
       <section className="hero">
 
-        <div className="hero-content">
+  <div className="hero-content">
 
-          <div className="hero-badge">
-            ✨ AI-Powered Learning
-          </div>
+    <div className="hero-badge">
+      ✨ AI-Powered Learning
+    </div>
 
-          <h1>
-            Learn Smarter.
-            <br />
-            <span>Understand Better.</span>
-          </h1>
+    <h1>
+      Learn Smarter.
+      <br />
+      <span>Understand Better.</span>
+    </h1>
 
-          <p>
-            Upload your study material and let AI help you
-            understand concepts, answer questions, create
-            quizzes and prepare for exams.
-          </p>
+    <p>
+      Upload your study material and let AI help you
+      understand concepts, answer questions, create
+      quizzes and prepare for exams.
+    </p>
 
-        </div>
+    <div className="hero-pipeline">
+      <strong>Upload</strong>
+      <span>→</span>
+      <strong>Embed</strong>
+      <span>→</span>
+      <strong>Retrieve</strong>
+      <span>→</span>
+      <strong>Answer</strong>
+    </div>
 
-      </section>
+  </div>
+
+</section>
 
 
       {/* =====================================
@@ -291,7 +312,7 @@ function App() {
                   ✓
                 </div>
 
-                <div>
+                <div className="upload-success-text">
                   <strong>
                     {uploadedFile.filename}
                   </strong>
@@ -301,6 +322,14 @@ function App() {
                     {uploadedFile.chunks} chunks
                   </p>
                 </div>
+
+                <button
+                  className="change-file-btn"
+                  onClick={changeFile}
+                  type="button"
+                >
+                  ✕ Change
+                </button>
 
               </div>
             )}
@@ -412,155 +441,161 @@ function App() {
             </div>
 
 
-            {/* QUESTION INPUT */}
+            {/* SCROLLABLE BODY: question, messages, answer, empty state */}
 
-            <div className="question-area">
+            <div className="chat-body">
 
-              <textarea
-                value={question}
-                onChange={(e) =>
-                  setQuestion(e.target.value)
-                }
-                placeholder="Ask something about your study material..."
-                rows="4"
-              />
+              {/* QUESTION INPUT */}
 
-              <button
-                className="ask-button"
-                onClick={() => askAI()}
-                disabled={loading}
-              >
+              <div className="question-area">
 
-                {loading ? (
-                  <>
-                    <span className="spinner"></span>
-                    Thinking...
-                  </>
-                ) : (
-                  <>
-                    Ask AI
-                    <span>✦</span>
-                  </>
-                )}
+                <textarea
+                  value={question}
+                  onChange={(e) =>
+                    setQuestion(e.target.value)
+                  }
+                  placeholder="Ask something about your study material..."
+                  rows="4"
+                />
 
-              </button>
+                <button
+                  className="ask-button"
+                  onClick={() => askAI()}
+                  disabled={loading}
+                >
 
-            </div>
+                  {loading ? (
+                    <>
+                      <span className="spinner"></span>
+                      Thinking...
+                    </>
+                  ) : (
+                    <>
+                      Ask AI
+                      <span>✦</span>
+                    </>
+                  )}
 
+                </button>
 
-            {/* ERROR */}
-
-            {error && (
-              <div className="error-message">
-                <span>!</span>
-                {error}
               </div>
-            )}
 
 
-            {/* SUCCESS MESSAGE */}
+              {/* ERROR */}
 
-            {message && !error && (
-              <div className="message">
-                <span>✓</span>
-                {message}
-              </div>
-            )}
+              {error && (
+                <div className="error-message">
+                  <span>!</span>
+                  {error}
+                </div>
+              )}
 
 
-            {/* ANSWER */}
+              {/* SUCCESS MESSAGE */}
 
-            {answer && (
-              <div className="answer-section">
+              {message && !error && (
+                <div className="message">
+                  <span>✓</span>
+                  {message}
+                </div>
+              )}
 
-                <div className="answer-title">
-                  <div className="mini-ai">
-                    ✦
+
+              {/* ANSWER */}
+
+              {answer && (
+                <div className="answer-section">
+
+                  <div className="answer-title">
+                    <div className="mini-ai">
+                      ✦
+                    </div>
+
+                    <div>
+                      <strong>AI Answer</strong>
+                      <span>Generated from your study material</span>
+                    </div>
                   </div>
 
-                  <div>
-                    <strong>AI Answer</strong>
-                    <span>Generated from your study material</span>
+
+                  <div className="answer-content">
+                    {answer}
                   </div>
-                </div>
 
 
-                <div className="answer-content">
-                  {answer}
-                </div>
+                  {/* SOURCES */}
 
+                  {sources.length > 0 && (
 
-                {/* SOURCES */}
+                    <div className="sources">
 
-                {sources.length > 0 && (
+                      <h4>
+                        📌 Sources
+                      </h4>
 
-                  <div className="sources">
+                      <div className="source-list">
 
-                    <h4>
-                      📌 Sources
-                    </h4>
+                        {sources.map(
+                          (source, index) => (
 
-                    <div className="source-list">
+                            <div
+                              className="source-item"
+                              key={index}
+                            >
 
-                      {sources.map(
-                        (source, index) => (
+                              <span className="source-number">
+                                {index + 1}
+                              </span>
 
-                          <div
-                            className="source-item"
-                            key={index}
-                          >
+                              <div>
+                                <strong>
+                                  {source.file}
+                                </strong>
 
-                            <span className="source-number">
-                              {index + 1}
-                            </span>
+                                <p>
+                                  Page {source.page}
+                                </p>
+                              </div>
 
-                            <div>
-                              <strong>
-                                {source.file}
-                              </strong>
-
-                              <p>
-                                Page {source.page}
-                              </p>
                             </div>
 
-                          </div>
+                          )
+                        )}
 
-                        )
-                      )}
+                      </div>
 
                     </div>
 
+                  )}
+
+                </div>
+              )}
+
+
+              {/* EMPTY STATE */}
+
+              {!answer && !loading && (
+
+                <div className="empty-state">
+
+                  <div className="empty-icon">
+                    💬
                   </div>
 
-                )}
+                  <h4>
+                    Your AI study assistant is ready
+                  </h4>
 
-              </div>
-            )}
+                  <p>
+                    Upload a PDF and ask a question to
+                    start learning.
+                  </p>
 
-
-            {/* EMPTY STATE */}
-
-            {!answer && !loading && (
-
-              <div className="empty-state">
-
-                <div className="empty-icon">
-                  💬
                 </div>
 
-                <h4>
-                  Your AI study assistant is ready
-                </h4>
+              )}
 
-                <p>
-                  Upload a PDF and ask a question to
-                  start learning.
-                </p>
-
-              </div>
-
-            )}
+            </div>
 
           </div>
 
