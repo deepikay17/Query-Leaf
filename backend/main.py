@@ -29,12 +29,14 @@ app = FastAPI(
 # --------------------------------------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows requests from any frontend port/origin
+    allow_origins=[
+        "http://localhost:5173",
+        "https://query-leaf-vert.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],  # Allows POST, GET, OPTIONS, etc.
     allow_headers=["*"],  # Allows all headers (Content-Type, etc.)
 )
-
 
 # --------------------------------------------------
 # Home
