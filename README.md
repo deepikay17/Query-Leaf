@@ -7,17 +7,6 @@ QueryLeaf lets you upload a PDF (notes, textbook, slides) and then chat with it 
 🔗 **Live Demo (Frontend):** [query-leaf-vert.vercel.app](https://query-leaf-vert.vercel.app)
 🔗 **Backend API:** [query-leaf.onrender.com](https://query-leaf.onrender.com) ([API docs](https://query-leaf.onrender.com/docs))
 
----
-## 📸 Screenshots
-
-### 🏠 QueryLeaf Dashboard
-
-<p align="center">
-  <img src="./screenshots/dashboard.png" alt="QueryLeaf Dashboard" width="900"/>
-</p>
-
-
-
 ## Features
 
 - 📄 **PDF Upload** — Upload your notes or textbook (max 20MB)
