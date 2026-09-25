@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./index.css";
 
-const API_URL = "http://127.0.0.1:8000";
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 function App() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -55,7 +55,7 @@ function App() {
     formData.append("file", selectedFile);
 
     const response = await fetch(
-      "http://127.0.0.1:8000/upload",
+     `${API_URL}/upload`,
       {
         method: "POST",
         body: formData,
